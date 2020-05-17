@@ -1,13 +1,13 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import Writing from '../sections/Writing';
+import Contacta from '../sections/Contacta';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const IndexPage = () => (
   <Layout>
     <Header />
-    <Writing />
+    <Contacta />
     <Footer />
   </Layout>
 );

@@ -7,37 +7,10 @@ import Fade from 'react-reveal/Fade';
 import FontAwesomeIcon from 'react-fontawesome';
 import Section from '../components/Section';
 import { CardContainer, Card } from '../components/Card';
-import Triangle from '../components/Triangle';
 import ImageSubtitle from '../components/ImageSubtitle';
 
 const MEDIUM_CDN = 'https://cdn-images-1.medium.com/max/400';
 const MEDIUM_URL = 'https://medium.com';
-
-const Background = () => (
-  <div>
-    <Triangle
-      color="backgroundDark"
-      height={['15vh', '10vh']}
-      width={['100vw', '100vw']}
-      invertX
-    />
-
-    <Triangle
-      color="secondary"
-      height={['50vh', '40vh']}
-      width={['70vw', '40vw']}
-      invertY
-    />
-
-    <Triangle
-      color="primaryDark"
-      height={['40vh', '15vh']}
-      width={['100vw', '100vw']}
-      invertX
-      invertY
-    />
-  </div>
-);
 
 const CoverImage = styled.img`
   width: 100%;
@@ -141,7 +114,7 @@ MorePosts.propTypes = {
 
 const edgeToArray = (data) => data.edges.map((edge) => edge.node);
 
-const Writing = () => (
+const Contacta = () => (
   <StaticQuery
     query={graphql`
       query MediumPostQuery {
@@ -191,8 +164,8 @@ const Writing = () => (
 
       return (
         isMediumUserDefined && (
-          <Section.Container id="writing" Background={Background}>
-            <Section.Header name="Writing" icon="✍️" label="writing" />
+          <Section.Container id="contacta">
+            <Section.Header name="Contacta" icon="✍️" label="contacta" />
             <CardContainer minWidth="300px">
               {posts.map(({ Component, ...rest }) => (
                 <Fade bottom key={rest.id}>
@@ -207,4 +180,4 @@ const Writing = () => (
   />
 );
 
-export default Writing;
+export default Contacta;
