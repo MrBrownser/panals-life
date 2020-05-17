@@ -2,12 +2,11 @@ import React, { Fragment } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Heading, Flex, Box } from 'rebass/styled-components';
 import { SectionLink } from 'react-scroll-section';
-import Section from '../components/Section';
 import SocialLink from '../components/SocialLink';
 import MouseIcon from '../components/MouseIcon';
 
 const LandingPage = () => (
-  <Section.Container id="home">
+  <>
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
@@ -50,7 +49,7 @@ const LandingPage = () => (
         );
       }}
     />
-  </Section.Container>
+  </>
 );
 
 export default LandingPage;

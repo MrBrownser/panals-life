@@ -5,7 +5,6 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import FontAwesomeIcon from 'react-fontawesome';
-import Section from '../components/Section';
 import { CardContainer, Card } from '../components/Card';
 import ImageSubtitle from '../components/ImageSubtitle';
 
@@ -164,16 +163,13 @@ const Contacta = () => (
 
       return (
         isMediumUserDefined && (
-          <Section.Container id="contacta">
-            <Section.Header name="Contacta" icon="✍️" label="contacta" />
-            <CardContainer minWidth="300px">
-              {posts.map(({ Component, ...rest }) => (
-                <Fade bottom key={rest.id}>
-                  <Component {...rest} key={rest.id} />
-                </Fade>
-              ))}
-            </CardContainer>
-          </Section.Container>
+          <CardContainer minWidth="300px">
+            {posts.map(({ Component, ...rest }) => (
+              <Fade bottom key={rest.id}>
+                <Component {...rest} key={rest.id} />
+              </Fade>
+            ))}
+          </CardContainer>
         )
       );
     }}

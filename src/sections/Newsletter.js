@@ -4,7 +4,6 @@ import { Image, Text, Flex, Box } from 'rebass/styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
-import Section from '../components/Section';
 import { CardContainer, Card } from '../components/Card';
 import SocialLink from '../components/SocialLink';
 import ImageSubtitle from '../components/ImageSubtitle';
@@ -142,8 +141,7 @@ Project.propTypes = {
 };
 
 const Projects = () => (
-  <Section.Container id="projects">
-    <Section.Header name="Newsletter" icon="💻" label="notebook" />
+  <>
     <StaticQuery
       query={graphql`
         query ProjectsQuery {
@@ -176,7 +174,7 @@ const Projects = () => (
         </CardContainer>
       )}
     />
-  </Section.Container>
+  </>
 );
 
 export default Projects;

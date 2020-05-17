@@ -4,7 +4,6 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import Fade from 'react-reveal/Fade';
-import Section from '../components/Section';
 import markdownRenderer from '../components/MarkdownRenderer';
 
 const ProfilePicture = styled(Image)`
@@ -17,8 +16,7 @@ const ProfilePicture = styled(Image)`
 `;
 
 const About = () => (
-  <Section.Container id="about">
-    <Section.Header name="Acerca de los nativos" icon="🙋‍♂️" label="person" />
+  <>
     <StaticQuery
       query={graphql`
         query AboutMeQuery {
@@ -67,7 +65,7 @@ const About = () => (
         );
       }}
     />
-  </Section.Container>
+  </>
 );
 
 export default About;
