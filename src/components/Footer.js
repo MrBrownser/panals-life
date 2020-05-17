@@ -41,7 +41,6 @@ const Footer = () => (
       query FooterQuery {
         contentfulAbout {
           name
-          roles
           socialLinks {
             id
             url
