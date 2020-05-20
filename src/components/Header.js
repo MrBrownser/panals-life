@@ -15,10 +15,10 @@ const HeaderContainer = styled(Headroom)`
   width: 100%;
 `;
 
-const capitalize = (s) => s && s[0].toUpperCase() + s.slice(1);
+// const capitalize = (s) => s && s[0].toUpperCase() + s.slice(1);
+// Use HIDE component to display the burguer menu! Check if it was done before (maybe)
 
 const menuItems = [
-  // Tienda
   {
     name: 'tienda',
     value: {
@@ -26,7 +26,6 @@ const menuItems = [
       isSelected: (smth) => console.log('tienda isSelected smth', smth),
     },
   },
-  // Newsletter
   {
     name: 'newsletter',
     value: {
@@ -34,7 +33,6 @@ const menuItems = [
       isSelected: (smth) => console.log('newsletter isSelected smth', smth),
     },
   },
-  // LOGO
   {
     name: 'home',
     value: {
@@ -42,7 +40,6 @@ const menuItems = [
       isSelected: (smth) => console.log('home isSelected smth', smth),
     },
   },
-  // Nativos
   {
     name: 'nativos',
     value: {
@@ -50,7 +47,6 @@ const menuItems = [
       isSelected: (smth) => console.log('nativos isSelected smth', smth),
     },
   },
-  // Contacta
   {
     name: 'contacta',
     value: {
@@ -60,24 +56,29 @@ const menuItems = [
   },
 ];
 
-// For the HOME link we should put this one instead
-{
-  /* <Image
-                src={Logo}
-                width="50px"
-                alt="Portfolio Logo"
-                onClick={home.onClick}
-                style={{
-                  cursor: 'pointer',
-                }}
-              /> */
-}
+// Existing breakpoints:
+// xs: '@media screen and (max-width: 40em)',
+// sm: '@media screen and (min-width: 40em) and (max-width: 52em)',
+// md: '@media screen and (min-width: 52em) and (max-width: 64em)',
+// lg: '@media screen and (min-width: 64em)',
 
 const Header = () => {
   const navLinks = menuItems.map((item) => {
     const { name, value } = item;
-    console.log('name', name);
-    console.log('value', value);
+    if (name === 'home') {
+      return (
+        <Image
+          src={Logo}
+          width={['30%', '20%']}
+          px={[2, 3]}
+          alt="Panals Life. Logo"
+          onClick={value.onClick}
+          style={{
+            cursor: 'pointer',
+          }}
+        />
+      );
+    }
     return (
       <RouteLink
         key={name}
@@ -91,10 +92,8 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Fade top>
-        <Flex flexWrap="wrap" justifyContent="center" alignItems="center" p={4}>
-          <Fragment>
-            <Flex mr={[0, 3, 5]}>{navLinks}</Flex>
-          </Fragment>
+        <Flex justifyContent="center" alignItems="center" p={4}>
+          <Fragment>{navLinks}</Fragment>
         </Flex>
       </Fade>
     </HeaderContainer>
