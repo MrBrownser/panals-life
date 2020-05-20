@@ -91,12 +91,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Fade top>
-        <Flex
-          flexWrap="wrap"
-          justifyContent="space-between"
-          alignItems="center"
-          p={3}
-        >
+        <Flex flexWrap="wrap" justifyContent="center" alignItems="center" p={4}>
           <Fragment>
             <Flex mr={[0, 3, 5]}>{navLinks}</Flex>
           </Fragment>
