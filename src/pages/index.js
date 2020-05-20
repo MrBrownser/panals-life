@@ -7,8 +7,8 @@ import Footer from '../components/Footer';
 const IndexPage = () => (
   <Layout>
     <Header />
-    <Landing />
-    <Footer />
+    {/* <Landing /> */}
+    {/* <Footer /> */}
   </Layout>
 );
 
