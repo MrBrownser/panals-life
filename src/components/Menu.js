@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import { Link } from 'gatsby';
 
 import MenuItems from '../menuItems';
@@ -44,14 +44,18 @@ const StyledMenu = styled.nav`
   }
 `;
 
-const Menu = ({ open }) => {
+const Menu = ({ open, theme }) => {
   return (
     <StyledMenu open={open}>
-      {MenuItems.map((item) => {
-        if (item.name === 'home') return null;
+      {MenuItems.map(({ name, navigateTo }) => {
+        if (name === 'home') return null;
         return (
-          <Link to={item.navigateTo} key={item.name}>
-            {item.name}
+          <Link
+            to={navigateTo}
+            activeStyle={{ color: theme.colors.secondaryLight }}
+            key={name}
+          >
+            {name}
           </Link>
         );
       })}
@@ -61,6 +65,8 @@ const Menu = ({ open }) => {
 
 Menu.propTypes = {
   open: PropTypes.bool.isRequired,
+  // eslint-disable-next-line
+  theme: PropTypes.object,
 };
 
-export default Menu;
+export default withTheme(Menu);
