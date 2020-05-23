@@ -14,7 +14,7 @@ import { useOnClickOutside } from '../hooks';
 
 const HeaderContainer = styled(Headroom)`
   .headroom--pinned {
-    background: ${(props) => props.theme.colors.primaryDark};
+    background: ${({ theme }) => theme.colors.primaryDark};
   }
 
   position: absolute;

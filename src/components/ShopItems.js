@@ -2,10 +2,11 @@ import React, { Fragment } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { Heading, Flex, Box } from 'rebass/styled-components';
 import { SectionLink } from 'react-scroll-section';
-import SocialLink from '../components/SocialLink';
-import MouseIcon from '../components/MouseIcon';
 
-const LandingPage = () => (
+import SocialLink from './SocialLink';
+import MouseIcon from './MouseIcon';
+
+const ShopItems = () => (
   <>
     <StaticQuery
       query={graphql`
@@ -23,6 +24,8 @@ const LandingPage = () => (
       `}
       render={({ contentfulAbout }) => {
         const { name, socialLinks } = contentfulAbout;
+
+        console.log("HEY I'M AT SHOPITEMS!!");
 
         return (
           <Fragment>
@@ -52,4 +55,4 @@ const LandingPage = () => (
   </>
 );
 
-export default LandingPage;
+export default ShopItems;

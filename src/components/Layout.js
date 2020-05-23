@@ -5,6 +5,8 @@ import { ScrollingProvider } from 'react-scroll-section';
 import config from 'react-reveal/globals';
 import preset from '@rebass/preset';
 
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer'; // TODO: Create and put it into the layout!
 import Helmet from './Helmet';
 import colors from '../colors';
 import breakpoints from '../breakpoints';
@@ -57,6 +59,7 @@ const Layout = ({ children }) => {
       <ThemeProvider theme={theme}>
         <ScrollingProvider>
           <Helmet />
+          <Navigation />
           {children}
         </ScrollingProvider>
       </ThemeProvider>
