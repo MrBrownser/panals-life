@@ -5,11 +5,12 @@ import { Flex, Image } from 'rebass/styled-components';
 import Fade from 'react-reveal/Fade';
 import Hide from './Hide';
 
+import MenuItems from '../menuItems';
 import NavLink from './NavLink';
 import Logo from './Logo/PanalsLife.svg';
 import Burguer from './Burguer';
 import Menu from './Menu';
-import useOnclickOutside, { useOnClickOutside } from '../hooks';
+import { useOnClickOutside } from '../hooks';
 
 const HeaderContainer = styled(Headroom)`
   .headroom--pinned {
@@ -20,36 +21,13 @@ const HeaderContainer = styled(Headroom)`
   width: 100%;
 `;
 
-const menuItems = [
-  {
-    name: 'tienda',
-    navigateTo: '/',
-  },
-  {
-    name: 'newsletter',
-    navigateTo: '/newsletter',
-  },
-  {
-    name: 'home',
-    navigateTo: '/',
-  },
-  {
-    name: 'nativos',
-    navigateTo: '/nativos',
-  },
-  {
-    name: 'contacta',
-    navigateTo: '/contacta',
-  },
-];
-
 const Header = () => {
   const [open, setOpen] = useState(false);
 
   const node = useRef();
   useOnClickOutside(node, () => setOpen(false));
 
-  const navLinks = menuItems.map((item) => {
+  const navLinks = MenuItems.map((item) => {
     const { navigateTo, name } = item;
     if (name === 'home') {
       return (
