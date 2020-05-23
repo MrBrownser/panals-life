@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import { ScrollingProvider } from 'react-scroll-section';
 import config from 'react-reveal/globals';
 import preset from '@rebass/preset';
-import colors from '../../colors';
+
 import Helmet from './Helmet';
+import colors from '../colors';
+import breakpoints from '../breakpoints';
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -36,6 +38,7 @@ const loadScript = (src) => {
 const theme = {
   ...preset,
   colors,
+  ...breakpoints,
   fonts: {
     body: 'Cabin, Open Sans, sans-serif',
     heading: 'inherit',

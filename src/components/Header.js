@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useState, useRef } from 'react';
 import Headroom from 'react-headroom';
 import styled from 'styled-components';
 import { Flex, Image } from 'rebass/styled-components';
@@ -7,6 +7,9 @@ import Hide from './Hide';
 
 import NavLink from './NavLink';
 import Logo from './Logo/PanalsLife.svg';
+import Burguer from './Burguer';
+import Menu from './Menu';
+import useOnclickOutside, { useOnClickOutside } from '../hooks';
 
 const HeaderContainer = styled(Headroom)`
   .headroom--pinned {
@@ -40,13 +43,12 @@ const menuItems = [
   },
 ];
 
-// Existing breakpoints:
-// xs: '@media screen and (max-width: 40em)',
-// sm: '@media screen and (min-width: 40em) and (max-width: 52em)',
-// md: '@media screen and (min-width: 52em) and (max-width: 64em)',
-// lg: '@media screen and (min-width: 64em)',
-
 const Header = () => {
+  const [open, setOpen] = useState(false);
+
+  const node = useRef();
+  useOnClickOutside(node, () => setOpen(false));
+
   const navLinks = menuItems.map((item) => {
     const { navigateTo, name } = item;
     if (name === 'home') {
@@ -65,8 +67,8 @@ const Header = () => {
       );
     }
     return (
-      <Hide xs>
-        <NavLink navigateTo={navigateTo} key={name} name={name} />
+      <Hide xs key={name}>
+        <NavLink navigateTo={navigateTo} name={name} />
       </Hide>
     );
   });
@@ -75,9 +77,13 @@ const Header = () => {
     <HeaderContainer>
       <Fade top>
         <Flex justifyContent="center" alignItems="center" p={4}>
-          <Fragment>{navLinks}</Fragment>
+          <>{navLinks}</>
         </Flex>
       </Fade>
+      <Hide sm md lg ref={node}>
+        <Burguer open={open} setOpen={setOpen} />
+        <Menu open={open} setOpen={setOpen} />
+      </Hide>
     </HeaderContainer>
   );
 };

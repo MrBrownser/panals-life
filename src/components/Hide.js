@@ -1,15 +1,12 @@
 import styled from 'styled-components';
 
-const breakpoints = {
-  xs: '@media screen and (max-width: 40em)',
-  sm: '@media screen and (min-width: 40em) and (max-width: 52em)',
-  md: '@media screen and (min-width: 52em) and (max-width: 64em)',
-  lg: '@media screen and (min-width: 64em)',
-};
+import breakpoints from '../breakpoints';
 
-const hidden = key => props =>
+const { mediaQueries } = breakpoints;
+
+const hidden = (key) => (props) =>
   props[key] && {
-    [breakpoints[key]]: {
+    [mediaQueries[key]]: {
       display: 'none',
     },
   };
@@ -19,7 +16,7 @@ const sm = hidden('sm');
 const md = hidden('md');
 const lg = hidden('lg');
 
-const customQuery = props =>
+const customQuery = (props) =>
   props.query && {
     [props.query]: {
       display: 'none',
