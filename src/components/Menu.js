@@ -49,7 +49,11 @@ const Menu = ({ open }) => {
     <StyledMenu open={open}>
       {MenuItems.map((item) => {
         if (item.name === 'home') return null;
-        return <Link to={item.navigateTo}>{item.name}</Link>;
+        return (
+          <Link to={item.navigateTo} key={item.name}>
+            {item.name}
+          </Link>
+        );
       })}
     </StyledMenu>
   );
