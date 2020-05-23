@@ -12,7 +12,7 @@ import Burguer from './Burguer';
 import Menu from './Menu';
 import { useOnClickOutside } from '../hooks';
 
-const HeaderContainer = styled(Headroom)`
+const NavigationContainer = styled(Headroom)`
   .headroom--pinned {
     background: ${({ theme }) => theme.colors.primaryDark};
   }
@@ -25,7 +25,7 @@ const HeaderContainer = styled(Headroom)`
   }
 `;
 
-const Header = () => {
+const Navigation = () => {
   const [open, setOpen] = useState(false);
 
   const node = useRef();
@@ -56,7 +56,7 @@ const Header = () => {
   });
 
   return (
-    <HeaderContainer>
+    <NavigationContainer>
       <Fade top>
         <Flex justifyContent="center" alignItems="center" p={4}>
           <>{navLinks}</>
@@ -66,8 +66,8 @@ const Header = () => {
         <Burguer open={open} setOpen={setOpen} />
         <Menu open={open} setOpen={setOpen} />
       </Hide>
-    </HeaderContainer>
+    </NavigationContainer>
   );
 };
 
-export default Header;
+export default Navigation;
