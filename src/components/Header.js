@@ -19,6 +19,10 @@ const HeaderContainer = styled(Headroom)`
 
   position: absolute;
   width: 100%;
+
+  a {
+    text-decoration: none;
+  }
 `;
 
 const Header = () => {
