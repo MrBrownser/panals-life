@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import Headroom from 'react-headroom';
 import styled from 'styled-components';
 import { Flex, Image } from 'rebass/styled-components';
@@ -25,7 +26,7 @@ const NavigationContainer = styled(Headroom)`
   }
 `;
 
-const Navigation = () => {
+const Navigation = ({ children }) => {
   const [open, setOpen] = useState(false);
 
   const node = useRef();
@@ -66,8 +67,14 @@ const Navigation = () => {
         <Burguer open={open} setOpen={setOpen} />
         <Menu open={open} setOpen={setOpen} />
       </Hide>
+
+      {children}
     </NavigationContainer>
   );
+};
+
+Navigation.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Navigation;

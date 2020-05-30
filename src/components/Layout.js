@@ -59,8 +59,7 @@ const Layout = ({ children }) => {
       <ThemeProvider theme={theme}>
         <ScrollingProvider>
           <Helmet />
-          <Navigation />
-          {children}
+          <Navigation>{children}</Navigation>
         </ScrollingProvider>
       </ThemeProvider>
     </main>

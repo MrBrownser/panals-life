@@ -1,10 +1,10 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import ShopItems from '../components/ShopItems';
+import Categories from '../components/Categories';
 
 const IndexPage = () => (
   <Layout>
-    <ShopItems />
+    <Categories />
   </Layout>
 );
 
