@@ -1,8 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
-import { Box } from 'rebass/styled-components';
 import Select from 'react-select';
+import { Box } from 'rebass/styled-components';
+
+const CategoriesContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
 
 const adaptOptions = (nodes) => {
   return nodes.map(({ id, title: { title } }) => ({ value: id, label: title }));
@@ -30,15 +37,17 @@ const Categories = ({ selectedCategory, onCategoryChange }) => (
       const options = adaptOptions(nodes);
 
       return (
-        <Box>
-          <Select
-            name="categoriesPicker"
-            options={options}
-            value={selectedCategory}
-            onChange={onCategoryChange}
-            placeholder="Categorías"
-          />
-        </Box>
+        <CategoriesContainer>
+          <Box py="2em" width={[1, 1 / 2, 1 / 3]}>
+            <Select
+              name="categoriesPicker"
+              options={options}
+              value={selectedCategory}
+              onChange={onCategoryChange}
+              placeholder="Categorías"
+            />
+          </Box>
+        </CategoriesContainer>
       );
     }}
   />
