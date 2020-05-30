@@ -44,7 +44,7 @@ const Categories = ({ selectedCategory, onCategoryChange }) => (
               options={options}
               value={selectedCategory}
               onChange={onCategoryChange}
-              placeholder="Categorías"
+              placeholder="Escoge categoría"
             />
           </Box>
         </CategoriesContainer>
