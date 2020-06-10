@@ -2,16 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
-import Select from 'react-select';
 import { Box } from 'rebass/styled-components';
 
-const CategoriesContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
-
-const ProductList = () => (
+const ProductList = ({ selectedCategory }) => (
   <StaticQuery
     query={graphql`
       {
@@ -38,11 +31,10 @@ const ProductList = () => (
 );
 
 ProductList.propTypes = {
-  //   selectedCategory: PropTypes.shape({
-  //     value: PropTypes.string,
-  //     label: PropTypes.string,
-  //   }),
-  //   onCategoryChange: PropTypes.func.isRequired,
+  selectedCategory: PropTypes.shape({
+    value: PropTypes.string,
+    label: PropTypes.string,
+  }),
 };
 
 export default ProductList;

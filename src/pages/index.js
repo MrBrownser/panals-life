@@ -14,7 +14,7 @@ const IndexPage = () => {
         selectedCategory={selectedCategory}
         onCategoryChange={updateCategory}
       />
-      <ProductList />
+      <ProductList selectedCategory={selectedCategory} />
     </Layout>
   );
 };
