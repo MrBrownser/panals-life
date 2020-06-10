@@ -38,7 +38,7 @@ const Categories = ({ selectedCategory, onCategoryChange }) => (
 
       return (
         <CategoriesContainer>
-          <Box py="2em" width={[1, 1 / 2, 1 / 3]}>
+          <Box py="2em" width={[1 / 4, 1 / 2, 1 / 3]}>
             <Select
               name="categoriesPicker"
               options={options}
