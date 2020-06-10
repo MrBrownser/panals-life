@@ -4,6 +4,17 @@ import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 import { Box } from 'rebass/styled-components';
 
+const filterProducts = (nodes, selectedCategory) => {
+  const { value: selectedCategoryId } = selectedCategory;
+
+  return nodes.filter((product) => {
+    const { categories } = product;
+    return categories.some(
+      (categoryObj) => categoryObj.id === selectedCategoryId,
+    );
+  });
+};
+
 const ProductList = ({ selectedCategory }) => (
   <StaticQuery
     query={graphql`
@@ -16,6 +27,12 @@ const ProductList = ({ selectedCategory }) => (
             productDescription {
               productDescription
             }
+            sizetypecolor
+            slug
+            price
+            categories {
+              id
+            }
           }
         }
       }
@@ -24,8 +41,11 @@ const ProductList = ({ selectedCategory }) => (
       const { nodes = false } = allContentfulProduct;
 
       if (!nodes || !nodes.length) return null;
+      const filteredProducts = !selectedCategory
+        ? nodes
+        : filterProducts(nodes, selectedCategory);
 
-      return <div>{JSON.stringify(nodes)}</div>;
+      return <div>{JSON.stringify(filteredProducts, null, 4)}</div>;
     }}
   />
 );
