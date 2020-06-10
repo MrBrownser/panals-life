@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import Categories from '../components/Categories';
+import ProductList from '../components/ProductList';
 
 const IndexPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -13,6 +14,7 @@ const IndexPage = () => {
         selectedCategory={selectedCategory}
         onCategoryChange={updateCategory}
       />
+      <ProductList />
     </Layout>
   );
 };
