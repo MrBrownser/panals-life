@@ -47,7 +47,7 @@ const Helmet = ({ theme = {} }) => (
           <meta name="og:description" content={description} />
           <meta name="og:image" content={`https:${profile.bigIcon.src}`} />
           <meta name="og:site_name" content={title} />
-          <meta name="og:locale" content="en_US" />
+          <meta name="og:locale" content="es" />
           <meta name="og:type" content="website" />
           <meta name="twitter:card" content="summary" />
           <meta name="twitter:title" content={title} />
