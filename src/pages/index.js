@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import Categories from '../components/Categories';
 
 const IndexPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const updateCategory = (category) => setSelectedCategory(category);
 
