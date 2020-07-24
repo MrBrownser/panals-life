@@ -44,17 +44,13 @@ const StyledMenu = styled.nav`
   }
 `;
 
-const Menu = ({ open, theme }) => {
+const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
       {MenuItems.map(({ name, navigateTo }) => {
         if (name === 'home') return null;
         return (
-          <Link
-            to={navigateTo}
-            activeStyle={{ color: theme.colors.secondaryLight }}
-            key={name}
-          >
+          <Link to={navigateTo} key={name}>
             {name}
           </Link>
         );
@@ -65,8 +61,6 @@ const Menu = ({ open, theme }) => {
 
 Menu.propTypes = {
   open: PropTypes.bool.isRequired,
-  // eslint-disable-next-line
-  theme: PropTypes.object,
 };
 
 export default withTheme(Menu);
