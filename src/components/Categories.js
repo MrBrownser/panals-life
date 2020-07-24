@@ -45,6 +45,7 @@ const Categories = ({ selectedCategory, onCategoryChange }) => (
               value={selectedCategory}
               onChange={onCategoryChange}
               placeholder="Escoge categoría"
+              isClearable
             />
           </Box>
         </CategoriesContainer>
