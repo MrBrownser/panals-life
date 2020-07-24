@@ -2,49 +2,74 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
-import { Box } from 'rebass/styled-components';
+import { Box, Heading, Text } from 'rebass/styled-components';
 import Fade from 'react-reveal/Fade';
 
-import { CardContainer, Card } from '../components/Card';
+import { CardContainer, Card } from './Card';
+import ImageSubtitle from './ImageSubtitle';
 
-// Imitar cómo crea el Post pero haciendo mi ProductCard
-// const Post = ({ title, text, image, url, date, time }) => (
-//   <a
-//     href={url}
-//     target="__blank"
-//     title={title}
-//     style={{ textDecoration: 'none' }}
-//   >
-//     <Card pb={4}>
-//       <EllipsisHeading m={3} p={1} color="text">
-//         {title}
-//       </EllipsisHeading>
-//       {image && <CoverImage src={image} height="200px" alt={title} />}
-//       <Text m={3} color="text">
-//         {text}
-//       </Text>
-//       <ImageSubtitle bg="primary" color="white" x="right" y="bottom" round>
-//         {`${date} - ${Math.ceil(time)} min`}
-//       </ImageSubtitle>
-//     </Card>
-//   </a>
-// );
+const EllipsisHeading = styled(Heading)`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-inline-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  border-bottom: ${(props) => props.theme.colors.primary} 5px solid;
+`;
 
-// Post.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   text: PropTypes.string.isRequired,
-//   image: PropTypes.string.isRequired,
-//   url: PropTypes.string.isRequired,
-//   date: PropTypes.string.isRequired,
-//   time: PropTypes.number.isRequired,
-// };
+const CoverImage = styled.img`
+  width: 100%;
+  object-fit: contain;
+`;
 
-const ProductCard = (product) => {
+const ProductCard = ({
+  product: {
+    productName: { productName: name },
+    productDescription: { productDescription: description },
+    sizetypecolor,
+    image: images,
+  },
+}) => {
+  const image = images[Math.floor(Math.random() * images.length)].fixed.src;
+
   return (
-    <Card>
-      <p>{JSON.stringify(product)}</p>
-    </Card>
+    <a
+      href="wwww.panals.life"
+      target="__blank"
+      title={name}
+      style={{ textDecoration: 'none' }}
+    >
+      <Card pb={4}>
+        <EllipsisHeading m={3} p={1} color="text">
+          {name}
+        </EllipsisHeading>
+        {image && <CoverImage src={image} height="200px" alt={name} />}
+        <Text m={3} color="text">
+          {description}
+        </Text>
+        <ImageSubtitle bg="primary" color="white" x="right" y="bottom" round>
+          {`Colores disponibles: ${sizetypecolor.join(' ,')}`}
+        </ImageSubtitle>
+      </Card>
+    </a>
   );
+};
+
+ProductCard.propTypes = {
+  product: PropTypes.shape({
+    productName: PropTypes.shape({
+      productName: PropTypes.string,
+    }),
+    productDescription: PropTypes.shape({
+      productDescription: PropTypes.string,
+    }),
+    sizetypecolor: PropTypes.arrayOf(PropTypes.string),
+    image: PropTypes.arrayOf({
+      fixed: PropTypes.shape({
+        src: PropTypes.string,
+      }),
+    }),
+  }).isRequired,
 };
 
 const filterProducts = (nodes, selectedCategory) => {
@@ -74,6 +99,7 @@ const groupProducts = (allProducts) => {
     }
     // It's already an array
     addToThisItem.sizetypecolor.push(currentItem.sizetypecolor);
+    addToThisItem.image.push(...currentItem.image);
     return acc;
   }, []);
 };
@@ -96,6 +122,11 @@ const ProductList = ({ selectedCategory }) => (
             categories {
               id
             }
+            image {
+              fixed {
+                src
+              }
+            }
           }
         }
       }
@@ -109,8 +140,6 @@ const ProductList = ({ selectedCategory }) => (
         : filterProducts(nodes, selectedCategory);
 
       const groupedProducts = groupProducts(filteredProducts);
-
-      // return <div>{JSON.stringify(filteredProducts, null, 4)}</div>;
 
       return (
         <CardContainer minWidth="300px">
