@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
-import { Box, Heading, Text } from 'rebass/styled-components';
+import { Box, Heading } from 'rebass/styled-components';
 import Fade from 'react-reveal/Fade';
 
 import { CardContainer, Card } from './Card';
@@ -25,8 +25,7 @@ const CoverImage = styled.img`
 const ProductCard = ({
   product: {
     productName: { productName: name },
-    productDescription: { productDescription: description },
-    sizetypecolor,
+    price,
     image: images,
   },
 }) => {
@@ -34,7 +33,7 @@ const ProductCard = ({
 
   return (
     <a
-      href="wwww.panals.life"
+      href="/404"
       target="__blank"
       title={name}
       style={{ textDecoration: 'none' }}
@@ -44,11 +43,8 @@ const ProductCard = ({
           {name}
         </EllipsisHeading>
         {image && <CoverImage src={image} height="200px" alt={name} />}
-        <Text m={3} color="text">
-          {description}
-        </Text>
         <ImageSubtitle bg="primary" color="white" x="right" y="bottom" round>
-          {`Colores disponibles: ${sizetypecolor.join(' ,')}`}
+          {`${price}€`}
         </ImageSubtitle>
       </Card>
     </a>
@@ -60,10 +56,7 @@ ProductCard.propTypes = {
     productName: PropTypes.shape({
       productName: PropTypes.string,
     }),
-    productDescription: PropTypes.shape({
-      productDescription: PropTypes.string,
-    }),
-    sizetypecolor: PropTypes.arrayOf(PropTypes.string),
+    price: PropTypes.number,
     image: PropTypes.arrayOf({
       fixed: PropTypes.shape({
         src: PropTypes.string,
@@ -142,13 +135,15 @@ const ProductList = ({ selectedCategory }) => (
       const groupedProducts = groupProducts(filteredProducts);
 
       return (
-        <CardContainer minWidth="300px">
-          {groupedProducts.map((product) => (
-            <Fade bottom key={product.slug}>
-              <ProductCard product={product} />
-            </Fade>
-          ))}
-        </CardContainer>
+        <Box width={[2 / 3]} m="auto">
+          <CardContainer minWidth="300px">
+            {groupedProducts.map((product) => (
+              <Fade bottom key={product.slug}>
+                <ProductCard product={product} />
+              </Fade>
+            ))}
+          </CardContainer>
+        </Box>
       );
     }}
   />
