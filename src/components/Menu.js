@@ -10,6 +10,7 @@ const StyledMenu = styled.nav`
   flex-direction: column;
   justify-content: center;
   background: ${({ theme }) => theme.colors.primaryLight};
+  z-index: 2;
   height: 100vh;
   text-align: left;
   padding: 2rem;
